@@ -37,6 +37,7 @@ namespace Player
 
             Vector2 moveValue = _moveAction.ReadValue<Vector2>();
             Vector2 lookAroundValue = _lookAroundAction.ReadValue<Vector2>();
+            Debug.Log(_moveAction.triggered);
 
             MovePlayer(moveValue);
             RotatePlayer(lookAroundValue);

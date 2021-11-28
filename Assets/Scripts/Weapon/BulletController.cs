@@ -10,7 +10,7 @@ namespace Weapon
 
         private void Start()
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+            GetComponent<Rigidbody>().AddForce(transform.forward * 1500f);
             StartCoroutine(DestroyBullet());
         }
 

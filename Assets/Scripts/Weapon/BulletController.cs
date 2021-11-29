@@ -22,7 +22,7 @@ namespace Weapon
 
         private void OnBecameInvisible()
         {
-            Destroy(gameObject);
+            Dissappear();
         }
 
 
@@ -34,13 +34,23 @@ namespace Weapon
                 enemyController.TakeDamage();
             }
 
+            Explode();
+        }
+
+        private void Explode()
+        {
+            Dissappear();
+        }
+
+        private void Dissappear()
+        {
             Destroy(gameObject);
         }
 
         private IEnumerator DestroyBullet()
         {
             yield return new WaitForSeconds(5);
-            Destroy(gameObject);
+            Dissappear();
         }
     }
 }

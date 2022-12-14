@@ -7,7 +7,6 @@ namespace Player
     public class PlayerLocomotion : MonoBehaviour
     {
         public CharacterController controller;
-        public Transform cam;
 
         public float speed = 6f;
 

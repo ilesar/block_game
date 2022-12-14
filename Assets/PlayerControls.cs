@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a460dce-694a-4167-b6c8-594a372f1b11"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,6 +163,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aaa13a19-6c11-400b-ad34-dd9da709bb89"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -165,6 +185,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_LookAround = m_Gameplay.FindAction("LookAround", throwIfNotFound: true);
+        m_Gameplay_Roll = m_Gameplay.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_LookAround;
+    private readonly InputAction m_Gameplay_Roll;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -234,6 +256,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @LookAround => m_Wrapper.m_Gameplay_LookAround;
+        public InputAction @Roll => m_Wrapper.m_Gameplay_Roll;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -252,6 +275,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LookAround.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
                 @LookAround.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
                 @LookAround.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
+                @Roll.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Roll.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Roll.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -265,6 +291,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LookAround.started += instance.OnLookAround;
                 @LookAround.performed += instance.OnLookAround;
                 @LookAround.canceled += instance.OnLookAround;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
             }
         }
     }
@@ -274,5 +303,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnLookAround(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }

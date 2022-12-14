@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerLocomotion : MonoBehaviour
     {
         public CharacterController controller;
         public Transform cam;
@@ -18,6 +18,7 @@ namespace Player
         private Transform _localTransform;
         private InputAction _lookAroundAction;
         private InputAction _moveAction;
+        private InputAction _rollAction;
         private PlayerInput _playerInput;
 
         private Animator _animator;
@@ -28,9 +29,11 @@ namespace Player
             _animator = GetComponent<Animator>();
             _moveAction = _playerInput.actions["Move"];
             _lookAroundAction = _playerInput.actions["LookAround"];
+            _rollAction = _playerInput.actions["Roll"];
 
             // _moveAction.started += ctx => EnableMovementShield(_moveAction.ReadValue<Vector2>());
             // _moveAction.performed += ctx => DisableMovementShield(_moveAction.ReadValue<Vector2>());
+            _rollAction.started += ctx => Roll();
         }
 
         private void Update()
@@ -108,6 +111,11 @@ namespace Player
                     directionOfMovement.normalized * input.magnitude * speed * Time.deltaTime
                 );
             }
+        }
+
+        private void Roll()
+        {
+            _animator.CrossFade("Roll", 0.2f);
         }
     }
 }

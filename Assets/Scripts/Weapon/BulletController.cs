@@ -25,12 +25,12 @@ namespace Weapon
             Dissappear();
         }
 
-
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.name == "Enemy(Clone)")
+            if (collision.gameObject.name == "Enemy")
             {
-                EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
+                EnemyController enemyController =
+                    collision.gameObject.GetComponent<EnemyController>();
                 enemyController.TakeDamage();
             }
 

@@ -24,7 +24,6 @@ namespace Player
             _audioSource = GetComponent<AudioSource>();
         }
 
-
         private void Update()
         {
             _localTransform = transform;
@@ -32,9 +31,17 @@ namespace Player
 
         private void Shoot()
         {
-            if (!bulletPrefab || !_localTransform) return;
+            // Debug.Log("Shoot");
+            if (!bulletPrefab || !_localTransform)
+            {
+                return;
+            }
             _audioSource.PlayOneShot(_audioSource.clip);
-            Instantiate(bulletPrefab, _localTransform.position + transform.forward * 3f, _localTransform.rotation);
+            Instantiate(
+                bulletPrefab,
+                _localTransform.position + transform.forward * 3f,
+                _localTransform.rotation
+            );
         }
     }
 }

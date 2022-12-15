@@ -56,8 +56,8 @@
                 },
                 {
                     "name": "",
-                    "id": "e451c878-c254-4b93-b807-000aaa0d93d6",
-                    "path": "<DualShockGamepad>/rightShoulder",
+                    "id": "96b880b3-cff6-41af-bfd3-ad493ed73b45",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -67,8 +67,8 @@
                 },
                 {
                     "name": "",
-                    "id": "96b880b3-cff6-41af-bfd3-ad493ed73b45",
-                    "path": "<Mouse>/leftButton",
+                    "id": "02e6ca00-85d3-43ca-a90f-3a7b56bd7cb0",
+                    "path": "<DualShockGamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

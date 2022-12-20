@@ -43,6 +43,10 @@ namespace Player
         {
             animatorHandler.UpdateAnimatorValue(input);
 
+            if (animatorHandler.isRolling == true) {
+                controller.Move(localTransform.forward * speed * Time.deltaTime);
+            }
+
             if (animatorHandler.canMove == false)
             {
                 return;
@@ -103,8 +107,8 @@ namespace Player
 
         private void HandleRoll()
         {
-            // animatorHandler.DisableRotation();
-            // animatorHandler.DisableMovement();
+            animatorHandler.DisableRotation();
+            animatorHandler.DisableMovement();
             animatorHandler.Roll();
         }
     }

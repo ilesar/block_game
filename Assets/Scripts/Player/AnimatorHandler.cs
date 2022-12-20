@@ -13,12 +13,15 @@ namespace Player
         public bool canRotate;
         public bool canMove;
 
+        public bool isRolling;
+
         public void Initialize()
         {
             animator = GetComponent<Animator>();
             blend = Animator.StringToHash("Blend");
             canRotate = true;
             canMove = true;
+            isRolling = false;
         }
 
         public void UpdateAnimatorValue(Vector2 movementVector)
@@ -32,6 +35,7 @@ namespace Player
         }
         public void Roll()
         {
+            isRolling = true;
             animator.CrossFade("Rolling", 0.2f);
         }
 
@@ -58,6 +62,11 @@ namespace Player
         public void DisableMovement()
         {
             canMove = false;
+        }
+
+        public void StopRolling()
+        {
+            isRolling = false;
         }
     }
 }

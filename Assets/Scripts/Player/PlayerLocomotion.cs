@@ -41,6 +41,13 @@ namespace Player
             HandlePlayerMovement(movementVector);
             HandlePlayerRotation(movementVector);
 
+            controller.SimpleMove(Vector3 .forward  * 0);
+
+            if (controller.isGrounded)
+            {
+                Debug.Log("CharacterController is grounded");
+            }
+
         }
 
         private void HandlePlayerMovement(Vector2 input)

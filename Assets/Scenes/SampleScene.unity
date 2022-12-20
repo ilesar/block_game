@@ -474,8 +474,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451292751}
-  m_LocalRotation: {x: 0.23661435, y: 0.00000001671778, z: -0.0000000040712753, w: 0.9716037}
-  m_LocalPosition: {x: 3.3, y: 10.2, z: -44.4}
+  m_LocalRotation: {x: 0.23661433, y: 0.000000008358891, z: -0.000000002035638, w: 0.9716037}
+  m_LocalPosition: {x: -1.69, y: 15.193, z: -37.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -950,8 +950,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.23661435, y: 0.00000001671778, z: -0.0000000040712753, w: 0.9716037}
-  m_LocalPosition: {x: 3.3, y: 10.2, z: -44.4}
+  m_LocalRotation: {x: 0.23661433, y: 0.000000008358891, z: -0.000000002035638, w: 0.9716037}
+  m_LocalPosition: {x: -1.69, y: 15.193, z: -37.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1018,15 +1018,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa89f563a6d64b4c84871e6ccaca372, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.3
+      value: -1.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa89f563a6d64b4c84871e6ccaca372, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa89f563a6d64b4c84871e6ccaca372, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.7
+      value: -17.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5aa89f563a6d64b4c84871e6ccaca372, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2121,13 +2121,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.39
+  m_Height: 1.66
   m_Radius: 0.42
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!114 &1384186786
 MonoBehaviour:
   m_ObjectHideFlags: 0

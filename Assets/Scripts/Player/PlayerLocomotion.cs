@@ -18,6 +18,8 @@ namespace Player
         private InputHandler inputHandler;
         private AnimatorHandler animatorHandler;
 
+        private bool isSprinting;
+
         private void Start()
         {
             inputHandler = GetComponent<InputHandler>();
@@ -26,6 +28,8 @@ namespace Player
             animatorHandler.Initialize();
             inputHandler.getFireAction().started += ctx => HandlePunch();
             inputHandler.getRollAction().started += ctx => HandleRoll();
+            inputHandler.getSprintAction().started += ctx => HandleSprint();
+            inputHandler.getSprintAction().canceled += ctx => HandleSprintStop();
         }
 
         private void Update()
@@ -41,7 +45,7 @@ namespace Player
 
         private void HandlePlayerMovement(Vector2 input)
         {
-            animatorHandler.UpdateAnimatorValue(input);
+            animatorHandler.UpdateAnimatorValue(input, isSprinting);
 
             if (animatorHandler.isRolling == true) {
                 controller.Move(localTransform.forward * speed * Time.deltaTime);
@@ -58,10 +62,14 @@ namespace Player
             Vector3 directionOfMovement = new Vector3(input.x, 0f, input.y).normalized; ;
             float magnitude = input.magnitude;
 
+            if (isSprinting) {
+                magnitude *= 1.3f;
+            }
+
             if (directionOfMovement.magnitude >= 0.1f)
             {
                 controller.Move(
-                    directionOfMovement.normalized * input.magnitude * speed * Time.deltaTime
+                    directionOfMovement.normalized * magnitude * speed * Time.deltaTime
                 );
             }
         }
@@ -78,9 +86,15 @@ namespace Player
                 return;
             }
 
+            float magnitude = 3f;
+
+            if (isSprinting) {
+                magnitude *= 1.3f;
+            }
+
             Debug.DrawLine(
                 localPosition,
-                transform.position + transform.forward * input.magnitude * 3f,
+                transform.position + transform.forward * input.magnitude * magnitude,
                 Color.red,
                 Time.deltaTime,
                 false
@@ -110,6 +124,23 @@ namespace Player
             animatorHandler.DisableRotation();
             animatorHandler.DisableMovement();
             animatorHandler.Roll();
+        }
+
+        private void HandleSprint()
+        {
+            Vector2 movementVector = inputHandler.getMovementVector();
+
+            if (movementVector.magnitude < 0.9f)
+            {
+                return;
+            }
+
+            isSprinting = true;
+        }
+
+        private void HandleSprintStop()
+        {
+            isSprinting = false;
         }
     }
 }

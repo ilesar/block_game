@@ -24,11 +24,17 @@ namespace Player
             isRolling = false;
         }
 
-        public void UpdateAnimatorValue(Vector2 movementVector)
+        public void UpdateAnimatorValue(Vector2 movementVector, bool isSprinting)
         {
+            float magnitude = movementVector.magnitude;
+
+            if (isSprinting) {
+                magnitude *= 2;
+            }
+
             animator.SetFloat(
                 blend,
-                movementVector.magnitude,
+                magnitude,
                 0.1f,
                 Time.deltaTime
             );
@@ -43,7 +49,7 @@ namespace Player
         {
             animator.CrossFade("Punching", 0.0f);
         }
-
+        
         public void EnableRotation()
         {
             canRotate = true;

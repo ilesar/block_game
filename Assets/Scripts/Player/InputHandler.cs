@@ -13,6 +13,7 @@ namespace Player
         private InputAction moveAction;
         private InputAction rollAction;
         private InputAction fireAction;
+        private InputAction sprintAction;
 
         // Start is called before the first frame update
         void Awake()
@@ -23,6 +24,7 @@ namespace Player
             lookAroundAction = playerInput.actions["LookAround"];
             rollAction = playerInput.actions["Roll"];
             fireAction = playerInput.actions["Fire"];
+            sprintAction = playerInput.actions["Sprint"];
         }
 
         public Vector2 getMovementVector()
@@ -43,6 +45,11 @@ namespace Player
         public InputAction getFireAction()
         {
             return fireAction;
+        }
+
+        public InputAction getSprintAction()
+        {
+            return sprintAction;
         }
     }
 }
